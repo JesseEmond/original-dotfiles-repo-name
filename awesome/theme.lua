@@ -136,7 +136,8 @@ theme.titlebar_maximized_button_focus_inactive  = "/usr/share/awesome/themes/def
 theme.titlebar_maximized_button_normal_active = "/usr/share/awesome/themes/default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = "/usr/share/awesome/themes/default/titlebar/maximized_focus_active.png"
 
-wallpapers_dir = "/home/dysleixa/media/images/wallpapers/"
+-- change for your wallpaper dir and images
+wallpapers_dir = os.getenv("HOME") .. "/media/images/wallpapers/"
 theme.wallpapers = {
     wallpapers_dir .. "spiky.jpg",
     wallpapers_dir .. "motivational.png",
