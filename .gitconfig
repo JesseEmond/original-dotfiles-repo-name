@@ -17,5 +17,6 @@
         c    = commit
         mg   = merge
         a    = add
+        aa   = add --all
         cm   = commit -m 
         tree = log --graph --decorate --pretty=oneline --abbrev-commit
