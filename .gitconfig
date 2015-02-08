@@ -1,0 +1,20 @@
+[user]
+	email = “emond.jesse@gmail.com”
+	name = Jesse Emond
+[push]
+	default = simple
+[core]
+	autocrlf = false
+	filemode = false
+[color]
+	ui = true
+[alias]
+	st = status
+	br = branch
+        ph = push
+        pl = pull
+        co = checkout
+        c  = commit
+        mg = merge
+        a  = add
+        cm = commit -m 
