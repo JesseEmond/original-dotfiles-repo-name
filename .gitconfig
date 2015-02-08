@@ -9,12 +9,13 @@
 [color]
 	ui = true
 [alias]
-	st = status
-	br = branch
-        ph = push
-        pl = pull
-        co = checkout
-        c  = commit
-        mg = merge
-        a  = add
-        cm = commit -m 
+	st   = status
+	br   = branch
+        ph   = push
+        pl   = pull
+        co   = checkout
+        c    = commit
+        mg   = merge
+        a    = add
+        cm   = commit -m 
+        tree = log --graph --decorate --pretty=oneline --abbrev-commit
