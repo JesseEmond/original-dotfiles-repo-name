@@ -15,8 +15,10 @@
         pl   = pull
         co   = checkout
         c    = commit
+        cm   = commit -m 
         mg   = merge
         a    = add
         aa   = add --all
-        cm   = commit -m 
         tree = log --graph --decorate --pretty=oneline --abbrev-commit
+        d    = diff
+        dc   = diff --cached
