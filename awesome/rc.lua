@@ -533,11 +533,11 @@ awful.rules.rules = {
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { tag = tags[1][2] } },
-    { rule = { class = "chrome" }, properties = { tag = tags[1][3] } },
-    { rule = { class = "Subl3" }, properties = { tag = tags[1][2] } },
-    { rule = { class = "Skype" }, properties = { tag = tags[1][4] } },
-    { rule = { class = "Audacious" }, properties = { tag = tags[1][5] } },
-    { rule = { class = "Eclipse" }, properties = { tag = tags[1][2] } },
+    { rule = { class = "chrome" }, callback = function(c) awful.client.movetotag(tags[client.focus.screen][3], c) end },
+    { rule = { class = "Subl3" }, callback = function(c) awful.client.movetotag(tags[client.focus.screen][2], c) end },
+    { rule = { class = "Skype" }, callback = function(c) awful.client.movetotag(tags[client.focus.screen][4], c) end },
+    { rule = { class = "Audacious" }, callback = function(c) awful.client.movetotag(tags[client.focus.screen][5], c) end },
+    { rule = { class = "Eclipse" }, callback = function(c) awful.client.movetotag(tags[client.focus.screen][2], c) end },
 }
 -- }}}
 
