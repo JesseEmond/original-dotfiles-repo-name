@@ -625,8 +625,7 @@ local wp_timeout  = 900
  
 -- setup the timer
 local wp_timer = timer { timeout = wp_timeout }
-wp_timer:connect_signal("timeout", function()
-  
+function pick_random_wallpaper()
     -- set wallpaper to current index for all screens
     for s = 1, screen.count() do
         local wp_filter = function(s) return string.match(s,"%.png$") or string.match(s,"%.jpg$") end
@@ -644,8 +643,10 @@ wp_timer:connect_signal("timeout", function()
     --restart the timer
     wp_timer.timeout = wp_timeout
     wp_timer:start()
-end)
+end
+wp_timer:connect_signal("timeout", pick_random_wallpaper)
   
 -- initial start when rc.lua is first run
 wp_timer:start()
+pick_random_wallpaper() -- start with a random one
 -- }}}
