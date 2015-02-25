@@ -13,6 +13,24 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 
+-- {{{ Function definitions
+-- scan directory, and optionally filter outputs
+function scandir(directory, filter)
+    local i, t, popen = 0, {}, io.popen
+    if not filter then
+        filter = function(s) return true end
+    end
+    print(filter)
+    for filename in popen('ls -a "'..directory..'"'):lines() do
+        if filter(filename) then
+            i = i + 1
+            t[i] = filename
+        end
+    end
+    return t
+end
+-- }}}
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -81,16 +99,6 @@ tags = {
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
     tags[s] = awful.tag(tags.names, s, tags.layout)
-
-    -- Each tag has a different wallpaper (possibly)
-    --for t = 1, 9 do
-        --tags[s][t]:connect_signal("property::selected", function (tag)
-            --if not tag.selected then return end
-            --gears.wallpaper.maximized(beautiful.wallpapers[t], s, true)
-        --end)
-    --end
-    --laggy, use one for screen instead for now
-    gears.wallpaper.maximized(beautiful.wallpapers[s],s,true)
 end
 -- }}}
 
@@ -612,4 +620,34 @@ end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+-- }}}
+
+-- {{{ Random wallpaper
+local wp_timeout  = 36000
+ 
+-- setup the timer
+local wp_timer = timer { timeout = wp_timeout }
+wp_timer:connect_signal("timeout", function()
+  
+    -- set wallpaper to current index for all screens
+    for s = 1, screen.count() do
+        local wp_filter = function(s) return string.match(s,"%.png$") or string.match(s,"%.jpg$") end
+        local wp_path = beautiful.wallpapers_dir
+        local wp_files = scandir(wp_path, wp_filter)
+        -- get next random index
+        local wp_index = math.random( 1, #wp_files)
+                             
+        gears.wallpaper.maximized(wp_path .. wp_files[wp_index], s, true)
+    end
+               
+    -- stop the timer (we don't need multiple instances running at the same time)
+    wp_timer:stop()
+                        
+    --restart the timer
+    wp_timer.timeout = wp_timeout
+    wp_timer:start()
+end)
+  
+-- initial start when rc.lua is first run
+wp_timer:start()
 -- }}}

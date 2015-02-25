@@ -137,19 +137,7 @@ theme.titlebar_maximized_button_normal_active = "/usr/share/awesome/themes/defau
 theme.titlebar_maximized_button_focus_active  = "/usr/share/awesome/themes/default/titlebar/maximized_focus_active.png"
 
 -- change for your wallpaper dir and images
-wallpapers_dir = os.getenv("HOME") .. "/media/images/wallpapers/"
-theme.wallpapers = {
-    wallpapers_dir .. "spiky.jpg",
-    wallpapers_dir .. "motivational.png",
-    wallpapers_dir .. "powerarrow-bg.jpg",
-    wallpapers_dir .. "lines.jpg",
-    wallpapers_dir .. "wave.jpg",
-    wallpapers_dir .. "pi.jpg",
-    wallpapers_dir .. "cuby.jpg",
-    wallpapers_dir .. "cuby.jpg",
-    wallpapers_dir .. "cuby.jpg"
-
-}
+theme.wallpapers_dir = os.getenv("HOME") .. "/media/images/wallpapers/"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = "/usr/share/awesome/themes/default/layouts/fairhw.png"
