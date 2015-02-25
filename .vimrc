@@ -14,6 +14,7 @@ set relativenumber " relative line numbers (easier to navigate)
 syntax on
 
 " Indentation
+filetype plugin indent on
 set shiftwidth=2  " amount of spaces for indentation
 set smartindent   " auto indentation
 set expandtab     " spaces, not tabs
