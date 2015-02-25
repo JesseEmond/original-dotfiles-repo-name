@@ -621,7 +621,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 -- {{{ Random wallpaper
-local wp_timeout  = 36000
+local wp_timeout  = 900
  
 -- setup the timer
 local wp_timer = timer { timeout = wp_timeout }
