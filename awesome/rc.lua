@@ -29,7 +29,7 @@ function scandir(directory, filter)
     end
     return t
 end
-function focused_screen() return client and client.focus.screen or 1 end
+function focused_screen() return client and client.focus and client.focus.screen or 1 end
 -- }}}
 
 -- {{{ Error handling
@@ -510,7 +510,11 @@ for i = 1, 9 do
                               awful.client.toggletag(tag)
                           end
                       end
-                  end))
+                  end),
+        -- Multimedia keys
+        awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer set Master 1%+") end),
+        awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer set Master 1%-") end),
+        awful.key({ }, "XF86AudioMute", function () awful.util.spawn("amixer set Master toggle") end))
 end
 
 clientbuttons = awful.util.table.join(
@@ -533,12 +537,6 @@ awful.rules.rules = {
                      --raise = true,
                      keys = clientkeys,
                      buttons = clientbuttons } },
-    { rule = { class = "MPlayer" },
-      properties = { floating = true } },
-    { rule = { class = "pinentry" },
-      properties = { floating = true } },
-    { rule = { class = "gimp" },
-      properties = { floating = true } },
     { rule = { class = "chrome" }, callback = function(c) awful.client.movetotag(tags[focused_screen()][3], c) end },
     { rule = { class = "Subl3" }, callback = function(c) awful.client.movetotag(tags[focused_screen()][2], c) end },
     { rule = { class = "Skype" }, callback = function(c) awful.client.movetotag(tags[focused_screen()][4], c) end },
