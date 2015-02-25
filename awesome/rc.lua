@@ -29,6 +29,7 @@ function scandir(directory, filter)
     end
     return t
 end
+function focused_screen() return client and client.focus.screen or 1 end
 -- }}}
 
 -- {{{ Error handling
@@ -538,14 +539,11 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "gimp" },
       properties = { floating = true } },
-    -- Set Firefox to always map on tags number 2 of screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { tag = tags[1][2] } },
-    { rule = { class = "chrome" }, callback = function(c) awful.client.movetotag(tags[client.focus.screen][3], c) end },
-    { rule = { class = "Subl3" }, callback = function(c) awful.client.movetotag(tags[client.focus.screen][2], c) end },
-    { rule = { class = "Skype" }, callback = function(c) awful.client.movetotag(tags[client.focus.screen][4], c) end },
-    { rule = { class = "Audacious" }, callback = function(c) awful.client.movetotag(tags[client.focus.screen][5], c) end },
-    { rule = { class = "Eclipse" }, callback = function(c) awful.client.movetotag(tags[client.focus.screen][2], c) end },
+    { rule = { class = "chrome" }, callback = function(c) awful.client.movetotag(tags[focused_screen()][3], c) end },
+    { rule = { class = "Subl3" }, callback = function(c) awful.client.movetotag(tags[focused_screen()][2], c) end },
+    { rule = { class = "Skype" }, callback = function(c) awful.client.movetotag(tags[focused_screen()][4], c) end },
+    { rule = { class = "Audacious" }, callback = function(c) awful.client.movetotag(tags[focused_screen()][5], c) end },
+    { rule = { class = "Eclipse" }, callback = function(c) awful.client.movetotag(tags[focused_screen()][2], c) end },
 }
 -- }}}
 
