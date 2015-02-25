@@ -23,6 +23,10 @@ set softtabstop=2 " tab space value
 " Autocomplete
 set wildmenu " enhanced command-line completion
 
+" Search
+set ignorecase " affects search and replace
+set smartcase  " case-insensitive when lowercase, case-sensitive otherwise. \C for case sensitive lowercase
+
 " Mappings
 " write as root
 " https://stackoverflow.com/questions/2600783/how-does-the-vim-write-with-sudo-trick-work
