@@ -1,3 +1,4 @@
 pathogen
 vim-fugitive
 powerline
+vim-unimpaired

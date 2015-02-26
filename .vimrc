@@ -31,8 +31,17 @@ set smartcase  " case-insensitive when lowercase, case-sensitive otherwise. \C f
 " write as root
 " https://stackoverflow.com/questions/2600783/how-does-the-vim-write-with-sudo-trick-work
 cmap w!! w !sudo tee > /dev/null %
-
+" CTags
+map <Leader>rt :!ctags --tag-relative --extra=+f -Rf.git/tags --exclude=.git,pkg --languages=-javascript,sql<CR><CR>
 
 " NERDTree shortcuts
 map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeMapActivateNode = '<SPACE>'
+
+" Tags
+set tags+=.git/tags
+
+" Whitespace
+let ruby_space_errors = 1
+let c_space_errors = 1
+set colorcolumn=81
