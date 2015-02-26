@@ -80,6 +80,7 @@ export PATH="/usr/lib/node_modules:`ruby -e 'print Gem.user_dir'`/bin:$PATH"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias g="git"
+alias v="vim"
 
 
 # powerline
