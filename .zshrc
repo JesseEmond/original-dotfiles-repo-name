@@ -82,11 +82,5 @@ export PATH="/usr/lib/node_modules:`ruby -e 'print Gem.user_dir'`/bin:$PATH"
 alias g="git"
 alias v="vim"
 
-
-# powerline
-. /usr/lib/python3.4/site-packages/powerline/bindings/zsh/powerline.zsh
-. /usr/share/zsh/site-contrib/powerline.zsh
-export PYTHONPATH=/usr/lib/python2.7/site-packages:/usr/lib/python3.4/site-packages
-
 # path
 export PATH=$PATH:/home/dysleixa/projects/chromium/depot_tools
