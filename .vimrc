@@ -41,7 +41,8 @@ let g:NERDTreeMapActivateNode = '<SPACE>'
 " Tags
 set tags+=.git/tags
 
-" Whitespace
+" Neckbeard settings
 let ruby_space_errors = 1
 let c_space_errors = 1
-set colorcolumn=81
+let &colorcolumn=join(range(81,999),",") " highlight all >= 81
+highlight ColorColumn ctermbg=235 guibg=#262626
