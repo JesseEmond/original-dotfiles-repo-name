@@ -17,7 +17,7 @@ set ruler          " always show cursor position
 
 " File navigation
 set suffixesadd+=.js,.rb " allow to "gf" on filename to goto file
-set path+=lib/**,test/**
+set path+=lib/**,test/** " e.g. :find looks in there for files
 
 " Text modification
 set backspace=indent,eol,start " backscape over autoindent, line breaks and
