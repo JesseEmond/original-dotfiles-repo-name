@@ -9,11 +9,15 @@ set showtabline=2 " always show tab line
 set noshowmode    " hide default mode text (e.g. '--INSERT--')
 set t_Co=256      " terminal 256 colors
 
-" Navigation
+" Text navigation
 set relativenumber " relative line numbers (easier to navigate)
 set number         " absolute line on current line (hybrid)
 set scrolloff=2    " amount of scroll in top/bottom of screen
 set ruler          " always show cursor position
+
+" File navigation
+set suffixesadd+=.js,.rb " allow to "gf" on filename to goto file
+set path+=lib/**,test/**
 
 " Text modification
 set backspace=indent,eol,start " backscape over autoindent, line breaks and
