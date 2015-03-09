@@ -23,6 +23,7 @@ set path+=lib/**,test/** " e.g. :find looks in there for files
 " Text modification
 set backspace=indent,eol,start " backscape over autoindent, line breaks and
                                " start of insert
+set clipboard=unnamedplus      " default to linux clipboard
 
 " Syntax highlighting
 syntax on
