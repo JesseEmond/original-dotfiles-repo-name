@@ -10,10 +10,11 @@ set noshowmode    " hide default mode text (e.g. '--INSERT--')
 set t_Co=256      " terminal 256 colors
 
 " Text navigation
-set relativenumber " relative line numbers (easier to navigate)
-set number         " absolute line on current line (hybrid)
-set scrolloff=2    " amount of scroll in top/bottom of screen
-set ruler          " always show cursor position
+set relativenumber             " relative line numbers (easier to navigate)
+set number                     " absolute line on current line (hybrid)
+set scrolloff=2                " amount of scroll in top/bottom of screen
+set ruler                      " always show cursor position
+highlight MatchParen ctermbg=4 " highlight matching parenthese with diff color
 
 " File navigation
 set suffixesadd+=.js,.rb " allow to "gf" on filename to goto file
