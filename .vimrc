@@ -24,6 +24,7 @@ set path+=lib/**,test/** " e.g. :find looks in there for files
 set backspace=indent,eol,start " backscape over autoindent, line breaks and
                                " start of insert
 set clipboard=unnamedplus      " default to linux clipboard
+set pastetoggle=<F2>           " paste mode with shortcut
 
 " Syntax highlighting
 syntax on
