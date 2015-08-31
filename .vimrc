@@ -1,13 +1,45 @@
-set nocompatible " vim mode
+" Plugins 
+call plug#begin('~/.vim/plugged')
 
-" runtime path manipulation (pathogen)
-execute pathogen#infect()
+" syntax
+Plug 'junegunn/seoul256.vim'
+Plug 'tpope/vim-git'
+Plug 'vim-ruby/vim-ruby'
+Plug 'moll/vim-node'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'pangloss/vim-javascript'
+Plug 'othree/html5.vim'
+Plug 'leshill/vim-json'
+Plug 'tpope/vim-markdown'
+" plugins
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-surround'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-unimpaired'
+Plug 'gorkunov/smartpairs.vim'
+Plug 'nelstrom/vim-visual-star-search'
+Plug 'tpope/vim-vinegar'
+Plug 'Valloric/YouCompleteMe'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+
+
+call plug#end()
 
 " Powerline
 set laststatus=2  " always display status line
 set showtabline=2 " always show tab line
 set noshowmode    " hide default mode text (e.g. '--INSERT--')
 set t_Co=256      " terminal 256 colors
+
+" Color scheme
+colorscheme seoul256
 
 " Text navigation
 set relativenumber             " relative line numbers (easier to navigate)
@@ -43,6 +75,12 @@ set history=50 " keep n lines of command history
 " Autocomplete
 set wildmenu " enhanced command-line completion
 
+" YouCompleteMe config
+let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_autoclose_preview_window_after_insertion=1
+highlight Pmenu ctermfg=255 ctermbg=235 guifg=#ffffff guibg=#000000
+highlight PmenuSel ctermfg=235 ctermbg=255 guifg=#000000 guibg=#ffffff
+
 " Search
 set ignorecase " affects search and replace
 set smartcase  " case-insensitive when lowercase, case-sensitive otherwise. 
@@ -56,10 +94,6 @@ cmap w!! w !sudo tee > /dev/null %
 " CTags
 map <Leader>rt :!ctags --tag-relative --extra=+f -Rf.git/tags --exclude=.git,pkg --languages=-javascript,sql<CR><CR>
 
-" NERDTree shortcuts
-map <C-n> :NERDTreeToggle<CR>
-let g:NERDTreeMapActivateNode = '<SPACE>'
-
 " Tags
 set tags+=.git/tags
 
@@ -69,3 +103,7 @@ let c_space_errors = 1
 set colorcolumn=81
 highlight ColorColumn ctermbg=235 guibg=#262626
 highlight LineNr ctermfg=DarkGrey
+
+" Goyo bindings 
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave LimeLight!
