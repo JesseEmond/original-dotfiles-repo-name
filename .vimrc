@@ -11,6 +11,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'othree/html5.vim'
 Plug 'leshill/vim-json'
 Plug 'tpope/vim-markdown'
+Plug 'ap/vim-css-color'
 " plugins
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
@@ -28,6 +29,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'Valloric/YouCompleteMe'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
+Plug 'kien/ctrlp.vim'
 
 
 call plug#end()
@@ -51,6 +53,9 @@ highlight MatchParen ctermbg=4 " highlight matching brace with diff color
 " File navigation
 set suffixesadd+=.js,.rb " allow to "gf" on filename to goto file
 set path+=lib/**,test/** " e.g. :find looks in there for files
+
+" ControlP settings
+let g:ctrlp_map = '<c-p>'
 
 " Text modification
 set backspace=indent,eol,start " backscape over autoindent, line breaks and
