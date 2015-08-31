@@ -30,6 +30,8 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'kien/ctrlp.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'shinchu/lightline-seoul256.vim'
 
 
 call plug#end()
@@ -108,6 +110,10 @@ let c_space_errors = 1
 set colorcolumn=81
 highlight ColorColumn ctermbg=235 guibg=#262626
 highlight LineNr ctermfg=DarkGrey
+
+" Lightline configuration
+let g:lightline = {}
+let g:lightline.colorscheme = 'seoul256'
 
 " Goyo bindings 
 autocmd! User GoyoEnter Limelight

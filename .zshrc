@@ -85,7 +85,4 @@ alias v="vim"
 # path
 export PATH=$PATH:/home/dysleixa/projects/chromium/depot_tools
 
-# powerline
-export PYTHONPATH=/usr/lib/python3.4/site-packages
-
 source ~/.config/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
