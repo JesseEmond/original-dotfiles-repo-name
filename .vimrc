@@ -134,8 +134,9 @@ let g:lightline.colorscheme = 'seoul256'
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave LimeLight!
 
-" RSpec.vim mappings
+" RSpec.vim configuration
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
+let g:rspec_command = "!bundle exec rspec {spec}"
