@@ -31,16 +31,21 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'itchyny/lightline.vim'
-Plug 'shinchu/lightline-seoul256.vim'
+Plug 'JesseEmond/lightline-seoul256.vim'
+Plug 'thoughtbot/vim-rspec'
+Plug 'easymotion/vim-easymotion'
 
 
 call plug#end()
 
-" Powerline
+" Status bar
 set laststatus=2  " always display status line
 set showtabline=2 " always show tab line
 set noshowmode    " hide default mode text (e.g. '--INSERT--')
 set t_Co=256      " terminal 256 colors
+
+" Leader
+let mapleader=","
 
 " Color scheme
 colorscheme seoul256
@@ -55,6 +60,16 @@ highlight MatchParen ctermbg=4 " highlight matching brace with diff color
 " File navigation
 set suffixesadd+=.js,.rb " allow to "gf" on filename to goto file
 set path+=lib/**,test/** " e.g. :find looks in there for files
+
+" Split navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" Split settings
+set splitbelow
+set splitright
 
 " ControlP settings
 let g:ctrlp_map = '<c-p>'
@@ -118,3 +133,9 @@ let g:lightline.colorscheme = 'seoul256'
 " Goyo bindings 
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave LimeLight!
+
+" RSpec.vim mappings
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
