@@ -132,7 +132,7 @@ let g:lightline.colorscheme = 'seoul256'
 
 " Goyo bindings 
 autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave LimeLight!
+autocmd! User GoyoLeave Limelight!
 
 " RSpec.vim configuration
 map <Leader>t :call RunCurrentSpecFile()<CR>
