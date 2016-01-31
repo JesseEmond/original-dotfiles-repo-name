@@ -95,7 +95,7 @@ local layouts =
 -- Define a tag table which hold all screen tags.
 tags = {
     names = { "zsh", "wrk", "www", "im ", " ♫ ", 6, 7, 8, 9 }
-    , layout = { layouts[2], layouts[2], layouts[4], layouts[1], layouts[1], layouts[1], layouts[1], layouts[1], layouts[1] }
+    , layout = { layouts[2], layouts[2], layouts[1], layouts[1], layouts[1], layouts[1], layouts[1], layouts[1], layouts[1] }
 }
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
