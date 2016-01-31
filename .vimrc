@@ -106,6 +106,9 @@ let g:ycm_autoclose_preview_window_after_insertion=1
 highlight Pmenu ctermfg=255 ctermbg=235 guifg=#ffffff guibg=#000000
 highlight PmenuSel ctermfg=235 ctermbg=255 guifg=#000000 guibg=#ffffff
 
+" Ultisnips config
+let g:UltiSnipsExpandTrigger="<c-j>"
+
 " Search
 set ignorecase " affects search and replace
 set smartcase  " case-insensitive when lowercase, case-sensitive otherwise. 
