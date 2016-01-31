@@ -84,5 +84,6 @@ alias v="vim"
 
 # path
 export PATH=$PATH:/home/dysleixa/projects/chromium/depot_tools
+export PATH=$PATH:~/.cabal/binTH=$PATH:~/.cabal/bin
 
 source ~/.config/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
