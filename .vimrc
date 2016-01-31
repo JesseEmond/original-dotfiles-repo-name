@@ -34,6 +34,8 @@ Plug 'itchyny/lightline.vim'
 Plug 'JesseEmond/lightline-seoul256.vim'
 Plug 'thoughtbot/vim-rspec'
 Plug 'easymotion/vim-easymotion'
+Plug 'derekwyatt/vim-scala'
+Plug 'bkad/CamelCaseMotion'
 
 
 call plug#end()
@@ -56,6 +58,7 @@ set number                     " absolute line on current line (hybrid)
 set scrolloff=2                " amount of scroll in top/bottom of screen
 set ruler                      " always show cursor position
 highlight MatchParen ctermbg=4 " highlight matching brace with diff color
+call camelcasemotion#CreateMotionMappings('<leader>') " camel case navigation
 
 " File navigation
 set suffixesadd+=.js,.rb " allow to "gf" on filename to goto file
