@@ -51,7 +51,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:~/.local/bin:$PATH
 export PATH="/usr/lib/node_modules:`ruby -e 'print Gem.user_dir'`/bin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -81,9 +81,20 @@ export PATH="/usr/lib/node_modules:`ruby -e 'print Gem.user_dir'`/bin:$PATH"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias g="git"
 alias v="vim"
+alias x="startx"
+alias ragequit="poweroff"
+
+# gtk
+export GTK_THEME=Arc
 
 # path
 export PATH=$PATH:/home/dysleixa/projects/chromium/depot_tools
 export PATH=$PATH:~/.cabal/binTH=$PATH:~/.cabal/bin
 
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
 source ~/.config/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# functions
+function :q { exit }
