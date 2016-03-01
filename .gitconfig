@@ -21,6 +21,8 @@
         a    = add
         aa   = add --all
         tree = log --graph --decorate --pretty=oneline --abbrev-commit
+        tr   = log --graph --decorate --pretty=oneline --abbrev-commit
         d    = diff
         dc   = diff --cached
 	conflicts = diff --name-only --diff-filter=U
+        lg   = log
