@@ -13,6 +13,12 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 
+-- {{{ Variables
+-- wallpaper
+local wp_timeout  = 900
+local wp_timer = timer { timeout = wp_timeout }
+
+-- }}}
 -- {{{ Function definitions
 -- scan directory, and optionally filter outputs
 function scandir(directory, filter)
@@ -28,6 +34,29 @@ function scandir(directory, filter)
         end
     end
     return t
+end
+-- pick random wallpapers for each screen
+function pick_random_wallpapers()
+    for s = 1, screen.count() do
+        pick_random_wallpaper(s)
+    end
+end
+-- pick a random wallpaper for the given screen
+function pick_random_wallpaper(screen)
+    local wp_filter = function(s) return string.match(s,"%.png$") or string.match(s,"%.jpg$") end
+    local wp_path = beautiful.wallpapers_dir
+    local wp_files = scandir(wp_path, wp_filter)
+    -- pick random index
+    local wp_index = math.random(1, #wp_files)
+
+    gears.wallpaper.maximized(wp_path .. wp_files[wp_index], screen, true)
+
+    -- stop the timer (we don't need multiple instances running at the same time)
+    wp_timer:stop()
+
+    --restart the timer
+    wp_timer.timeout = wp_timeout
+    wp_timer:start()
 end
 function focused_screen() return client and client.focus and client.focus.screen or 1 end
 -- }}}
@@ -132,7 +161,7 @@ separation_layout_date_img:set_image(beautiful.widget_ar_layout_date)
 separation_layout_date_margin = wibox.layout.margin(separation_layout_date_img,0,5,0,0)
 separation_layout_date = wibox.widget.background()
 separation_layout_date:set_widget(separation_layout_date_margin)
-separation_layout_date:set_bg("#222222")
+separation_layout_date:set_bg("#00796B")
 
 --{{---| Date widget |-------------------------------------------------------------------------------
 datewidget = wibox.widget.background()
@@ -399,7 +428,7 @@ globalkeys = awful.util.table.join(
             awful.client.focus.byidx(-1)
             if client.focus then client.focus:raise() end
         end),
-    awful.key({ modkey,           }, "w", function () mymainmenu:show() end),
+    awful.key({ modkey,           }, "w", function () pick_random_wallpaper(focused_screen()) end),
 
     -- Generic bindings
     awful.key({ modkey,           }, "F12", function () awful.util.spawn("slimlock")    end),
@@ -538,10 +567,12 @@ awful.rules.rules = {
                      keys = clientkeys,
                      buttons = clientbuttons } },
     { rule = { class = "chrome" }, callback = function(c) awful.client.movetotag(tags[focused_screen()][3], c) end },
+    { rule = { class = "Firefox" }, callback = function(c) awful.client.movetotag(tags[focused_screen()][3], c) end },
     { rule = { class = "Subl3" }, callback = function(c) awful.client.movetotag(tags[focused_screen()][2], c) end },
     { rule = { class = "Skype" }, callback = function(c) awful.client.movetotag(tags[focused_screen()][4], c) end },
     { rule = { class = "Audacious" }, callback = function(c) awful.client.movetotag(tags[focused_screen()][5], c) end },
     { rule = { class = "Eclipse" }, callback = function(c) awful.client.movetotag(tags[focused_screen()][2], c) end },
+    { rule = { class = "Spotify" }, callback = function(c) awful.client.movetotag(tags[focused_screen()][5], c) end },
 }
 -- }}}
 
@@ -618,33 +649,10 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
--- {{{ Random wallpaper
-local wp_timeout  = 900
  
--- setup the timer
-local wp_timer = timer { timeout = wp_timeout }
-function pick_random_wallpaper()
-    -- set wallpaper to current index for all screens
-    for s = 1, screen.count() do
-        local wp_filter = function(s) return string.match(s,"%.png$") or string.match(s,"%.jpg$") end
-        local wp_path = beautiful.wallpapers_dir
-        local wp_files = scandir(wp_path, wp_filter)
-        -- get next random index
-        local wp_index = math.random( 1, #wp_files)
-                             
-        gears.wallpaper.maximized(wp_path .. wp_files[wp_index], s, true)
-    end
-               
-    -- stop the timer (we don't need multiple instances running at the same time)
-    wp_timer:stop()
-                        
-    --restart the timer
-    wp_timer.timeout = wp_timeout
-    wp_timer:start()
-end
-wp_timer:connect_signal("timeout", pick_random_wallpaper)
-  
+-- {{{ Random wallpapers
 -- initial start when rc.lua is first run
+wp_timer:connect_signal("timeout", pick_random_wallpapers)
 wp_timer:start()
-pick_random_wallpaper() -- start with a random one
--- }}}
+pick_random_wallpapers() -- start with random wallpapers
+--- }}}

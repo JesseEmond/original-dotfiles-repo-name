@@ -14,24 +14,24 @@ white = "#ffffff"
 
 theme = {}
 
-theme.font                                 = "Terminus 8"
-theme.fg_normal                             = "#aaaaaa"
+theme.font                                  = "Railway 8"
+theme.fg_normal                             = "#B6B6B6"
 theme.fg_focus                              = "#f0dfaf"
 theme.fg_urgent                             = "#cc9393"
-theme.bg_normal                             = "#222222"
-theme.bg_focus                              = "#1e2320"
+theme.bg_normal                             = "#00796B"
+theme.bg_focus                              = "#009688"
 theme.bg_urgent                             = "#3f3f3f"
 theme.bg_systray                            = "#313131"
 theme.border_width                          = 0
 theme.border_normal                         = "#3f3f3f"
 theme.border_focus                          = "#6f6f6f"
 theme.border_marked                         = "#cc9393"
-theme.titlebar_bg_focus                     = "#3f3f3f"
-theme.titlebar_bg_normal                    = "#3f3f3f"
-theme.taglist_bg_focus                      = black 
-theme.taglist_fg_focus                      = dblue
-theme.tasklist_bg_focus                     = "#222222" 
-theme.tasklist_fg_focus                     = dblue
+theme.titlebar_bg_focus                     = "#00796B"
+theme.titlebar_bg_normal                    = "#00796B"
+theme.taglist_bg_focus                      = "#009688"
+theme.taglist_fg_focus                      = "#FFFFFF"
+theme.tasklist_bg_focus                     = "#009688"
+theme.tasklist_fg_focus                     = "#FFFFFF"
 theme.textbox_widget_as_label_font_color    = white 
 theme.textbox_widget_margin_top             = 1
 theme.text_font_color_1                     = green
@@ -41,17 +41,17 @@ theme.notify_font_color_1                   = green
 theme.notify_font_color_2                   = dblue
 theme.notify_font_color_3                   = black
 theme.notify_font_color_4                   = white
-theme.notify_font                           = "Monaco 7"
+theme.notify_font                           = "Railway 10"
 theme.notify_fg                             = theme.fg_normal
 theme.notify_bg                             = theme.bg_normal
 theme.notify_border                         = theme.border_focus
-theme.awful_widget_bckgrd_color             = dgrey
-theme.awful_widget_border_color             = dgrey
+theme.awful_widget_bckgrd_color             = "#00796B"
+theme.awful_widget_border_color             = "#00796B"
 theme.awful_widget_color                    = dblue
 theme.awful_widget_gradien_color_1          = orange
 theme.awful_widget_gradien_color_2          = orange
 theme.awful_widget_gradien_color_3          = orange
-theme.awful_widget_height                   = 14
+theme.awful_widget_height                   = 16
 theme.awful_widget_margin_top               = 2
 
 -- There are other variable sets
@@ -65,9 +65,11 @@ theme.awful_widget_margin_top               = 2
 -- Example:
 --theme.taglist_bg_focus = "#ff0000"
 
+local icons = "~/.config/awesome/icons/"
+
 -- Display the taglist squares
-theme.taglist_squares_sel   = "/usr/share/awesome/themes/default/taglist/squarefw.png"
-theme.taglist_squares_unsel = "/usr/share/awesome/themes/default/taglist/squarew.png"
+theme.taglist_squares_sel   = icons .. "squarefw.png"
+theme.taglist_squares_unsel = icons .. "squarew.png"
 
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]
@@ -82,7 +84,6 @@ theme.menu_width  = 140
 --theme.bg_widget = "#cc0000"
 
 -- Widget icons
-local icons = "~/.config/awesome/icons/"
 theme.widget_net = icons .. "net.png"
 theme.widget_ar_net_bat = icons .. "arr3.png"
 theme.widget_battery = icons .. "battery.png"
