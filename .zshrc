@@ -51,8 +51,6 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH=$HOME/bin:/usr/local/bin:~/.local/bin:$PATH
-export PATH="/usr/lib/node_modules:`ruby -e 'print Gem.user_dir'`/bin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -64,6 +62,7 @@ export PATH="/usr/lib/node_modules:`ruby -e 'print Gem.user_dir'`/bin:$PATH"
 # else
 #   export EDITOR='mvim'
 # fi
+export EDITOR='vim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -79,10 +78,17 @@ export PATH="/usr/lib/node_modules:`ruby -e 'print Gem.user_dir'`/bin:$PATH"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias tmux="tmux -2" # use vim 256 colors
 alias g="git"
 alias v="vim"
 alias x="startx"
 alias ragequit="poweroff"
+
+# bin
+export PATH=$HOME/bin:/usr/local/bin:~/.local/bin:/usr/bin:$PATH
+
+# ruby
+export PATH="/usr/lib/node_modules:`ruby -e 'print Gem.user_dir'`/bin:$PATH"
 
 # gtk
 export GTK_THEME=Arc
