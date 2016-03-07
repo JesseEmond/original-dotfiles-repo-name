@@ -1,7 +1,7 @@
 " Plugins 
 call plug#begin('~/.vim/plugged')
 
-" syntax
+" Syntax
 Plug 'junegunn/seoul256.vim'
 Plug 'tpope/vim-git'
 Plug 'vim-ruby/vim-ruby'
@@ -12,7 +12,7 @@ Plug 'othree/html5.vim'
 Plug 'leshill/vim-json'
 Plug 'tpope/vim-markdown'
 Plug 'ap/vim-css-color'
-" plugins
+" Plugins
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
 Plug 'SirVer/ultisnips'
@@ -36,6 +36,8 @@ Plug 'thoughtbot/vim-rspec'
 Plug 'easymotion/vim-easymotion'
 Plug 'derekwyatt/vim-scala'
 Plug 'bkad/CamelCaseMotion'
+Plug 'scrooloose/syntastic'
+Plug 'edkolev/tmuxline.vim'
 
 
 call plug#end()
@@ -49,6 +51,9 @@ set t_Co=256      " terminal 256 colors
 " Leader
 let mapleader=","
 
+" Escape
+:imap jk <Esc>
+
 " Color scheme
 colorscheme seoul256
 
@@ -60,15 +65,20 @@ set ruler                      " always show cursor position
 highlight MatchParen ctermbg=4 " highlight matching brace with diff color
 call camelcasemotion#CreateMotionMappings('<leader>') " camel case navigation
 
+" Text display
+set wrap
+set linebreak
+set showbreak=…
+
 " File navigation
 set suffixesadd+=.js,.rb " allow to "gf" on filename to goto file
 set path+=lib/**,test/** " e.g. :find looks in there for files
 
-" Split navigation
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+" Split navigation / creation
+map <silent> <C-h> :call WinMove('h')<cr>
+map <silent> <C-j> :call WinMove('j')<cr>
+map <silent> <C-k> :call WinMove('k')<cr>
+map <silent> <C-l> :call WinMove('l')<cr>
 
 " Split settings
 set splitbelow
@@ -96,6 +106,16 @@ set softtabstop=2 " tab space value
 " Commands
 set showcmd    " display incomplete commands
 set history=50 " keep n lines of command history
+
+" Syntastics
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_python_checkers = ['flake8']
 
 " Autocomplete
 set wildmenu " enhanced command-line completion
@@ -131,6 +151,8 @@ let c_space_errors = 1
 set colorcolumn=81
 highlight ColorColumn ctermbg=235 guibg=#262626
 highlight LineNr ctermfg=DarkGrey
+" remove extra whitespace
+nmap <leader><space> :%s/\s\+$<cr>
 
 " Lightline configuration
 let g:lightline = {}
@@ -146,3 +168,23 @@ map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 let g:rspec_command = "!bundle exec rspec {spec}"
+
+"""""""""""""
+" Functions "
+"""""""""""""
+
+" Window movement shortcuts
+" move to the window in the direction shown, or create a new window if none
+" available.
+function! WinMove(key)
+    let t:curwin = winnr()
+    exec "wincmd ".a:key
+    if (t:curwin == winnr())
+      if (match(a:key,'[jk]'))
+        wincmd v
+      else
+        wincmd s
+      endif
+      exec "wincmd ".a:key
+    endif
+endfunction
