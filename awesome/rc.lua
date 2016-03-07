@@ -494,7 +494,14 @@ clientkeys = awful.util.table.join(
         function (c)
             c.maximized_horizontal = not c.maximized_horizontal
             c.maximized_vertical   = not c.maximized_vertical
-        end)
+        end),
+    -- Multimedia keys
+    awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer set Master 3%+") end),
+    awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer set Master 3%-") end),
+    awful.key({ }, "XF86AudioMute", nil, function () awful.util.spawn("amixer set Master toggle") end),
+    awful.key({ }, "XF86AudioPlay", nil, function () awful.util.spawn("playerctl play-pause") end),
+    awful.key({ }, "XF86AudioNext", nil, function () awful.util.spawn("playerctl next") end),
+    awful.key({ }, "XF86AudioPrev", nil, function () awful.util.spawn("playerctl prev") end)
 )
 
 -- Bind all key numbers to tags.
@@ -539,11 +546,8 @@ for i = 1, 9 do
                               awful.client.toggletag(tag)
                           end
                       end
-                  end),
-        -- Multimedia keys
-        awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer set Master 1%+") end),
-        awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer set Master 1%-") end),
-        awful.key({ }, "XF86AudioMute", function () awful.util.spawn("amixer set Master toggle") end))
+                  end)
+    )
 end
 
 clientbuttons = awful.util.table.join(
@@ -563,6 +567,7 @@ awful.rules.rules = {
       properties = { border_width = beautiful.border_width,
                      border_color = beautiful.border_normal,
                      focus = awful.client.focus.filter,
+                     size_hints_honor = false,
                      --raise = true,
                      keys = clientkeys,
                      buttons = clientbuttons } },
