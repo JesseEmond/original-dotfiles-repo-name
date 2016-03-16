@@ -123,7 +123,7 @@ local layouts =
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 tags = {
-    names = { "zsh", "wrk", "www", "im ", " ♫ ", 6, 7, 8, 9, "" }
+    names = { "zsh", "wrk", "www", "msg", " ♫ ", 6, 7, 8, 9, "" }
     , layout = { layouts[2], layouts[2], layouts[1], layouts[1], layouts[1], layouts[1], layouts[1], layouts[1], layouts[1] }
 }
 for s = 1, screen.count() do
@@ -661,3 +661,8 @@ wp_timer:connect_signal("timeout", pick_random_wallpapers)
 wp_timer:start()
 pick_random_wallpapers() -- start with random wallpapers
 --- }}}
+
+-- {{{ Autostart
+awful.util.spawn_with_shell("xmodmap ~/.xmodmap")
+awful.util.spawn_with_shell("dualscreen")
+-- }}}
