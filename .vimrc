@@ -42,6 +42,9 @@ Plug 'edkolev/tmuxline.vim'
 
 call plug#end()
 
+" Vimrc
+autocmd! bufwritepost .vimrc source % " auto-reload of vimrc while modifying it
+
 " Status bar
 set laststatus=2  " always display status line
 set showtabline=2 " always show tab line
@@ -102,6 +105,7 @@ set shiftwidth=2  " amount of spaces for indentation
 set autoindent    " auto indentation
 set expandtab     " spaces, not tabs
 set softtabstop=2 " tab space value
+set cino+=(0      " indentation around parentheses (e.g. parameters)
 
 " Commands
 set showcmd    " display incomplete commands
