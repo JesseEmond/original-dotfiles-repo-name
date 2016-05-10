@@ -1,6 +1,6 @@
 [user]
 	email = “emond.jesse@gmail.com”
-	name = Jesse Emond
+	name = JesseEmond
 [push]
 	default = simple
 [core]
@@ -15,7 +15,7 @@
         ph   = push
         pl   = pull
         co   = checkout
-        c    = commit
+        c    = commit --verbose
         cm   = commit -m 
         mg   = merge
         a    = add
