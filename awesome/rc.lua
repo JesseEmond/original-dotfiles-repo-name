@@ -501,7 +501,9 @@ clientkeys = awful.util.table.join(
     awful.key({ }, "XF86AudioMute", nil, function () awful.util.spawn("amixer set Master toggle") end),
     awful.key({ }, "XF86AudioPlay", nil, function () awful.util.spawn("playerctl play-pause") end),
     awful.key({ }, "XF86AudioNext", nil, function () awful.util.spawn("playerctl next") end),
-    awful.key({ }, "XF86AudioPrev", nil, function () awful.util.spawn("playerctl prev") end)
+    awful.key({ }, "XF86AudioPrev", nil, function () awful.util.spawn("playerctl prev") end),
+    -- Utilities
+    awful.key({ }, "Print", nil, function () awful.util.spawn("spectacle") end)
 )
 
 -- Bind all key numbers to tags.
@@ -665,4 +667,5 @@ pick_random_wallpapers() -- start with random wallpapers
 -- {{{ Autostart
 awful.util.spawn_with_shell("xmodmap ~/.xmodmap")
 awful.util.spawn_with_shell("dualscreen")
+awful.util.spawn(terminal)
 -- }}}

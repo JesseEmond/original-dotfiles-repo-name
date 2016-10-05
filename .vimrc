@@ -38,6 +38,10 @@ Plug 'derekwyatt/vim-scala'
 Plug 'bkad/CamelCaseMotion'
 Plug 'scrooloose/syntastic'
 Plug 'edkolev/tmuxline.vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'airblade/vim-gitgutter'
 
 
 call plug#end()
@@ -50,6 +54,7 @@ set laststatus=2  " always display status line
 set showtabline=2 " always show tab line
 set noshowmode    " hide default mode text (e.g. '--INSERT--')
 set t_Co=256      " terminal 256 colors
+
 
 " Leader
 let mapleader=","
@@ -89,6 +94,7 @@ set splitright
 
 " ControlP settings
 let g:ctrlp_map = '<c-p>'
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 " Text modification
 set backspace=indent,eol,start " backscape over autoindent, line breaks and
@@ -98,14 +104,16 @@ set pastetoggle=<F2>           " paste mode with shortcut
 
 " Syntax highlighting
 syntax on
+let g:jsx_ext_required = 0 " JSX in .js files
 
 " Indentation
 filetype plugin indent on
-set shiftwidth=2  " amount of spaces for indentation
+set shiftwidth=4  " amount of spaces for indentation
 set autoindent    " auto indentation
 set expandtab     " spaces, not tabs
-set softtabstop=2 " tab space value
+set softtabstop=4 " tab space value
 set cino+=(0      " indentation around parentheses (e.g. parameters)
+au FileType javascript setl sw=2 sts=2 et
 
 " Commands
 set showcmd    " display incomplete commands
@@ -118,8 +126,10 @@ set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_wq = 1
 let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_scala_checkers = []
+nmap <F3> :SyntasticToggleMode<cr>
 
 " Autocomplete
 set wildmenu " enhanced command-line completion

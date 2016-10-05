@@ -7,7 +7,7 @@ tmux attach-session -t 'dev' && exit $?
 
 # create it otherwise
 cd ~/projects/$1
-tmux new-session -d -s 'dev' -n 'src' 'vim .'
+tmux new-session -d -s 'dev' -n 'src'
 tmux split-window -v -p 30
 tmux new-window -n 'sh'
 tmux split-window -v

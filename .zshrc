@@ -88,7 +88,9 @@ alias ragequit="poweroff"
 export PATH=$HOME/bin:/usr/local/bin:~/.local/bin:/usr/bin:$PATH
 
 # ruby
-export PATH="/usr/lib/node_modules:`ruby -e 'print Gem.user_dir'`/bin:$PATH"
+# export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+# [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+# export PATH="/usr/lib/node_modules:`ruby -e 'print Gem.user_dir'`/bin:$PATH"
 
 # gtk
 export GTK_THEME=Arc
@@ -96,9 +98,6 @@ export GTK_THEME=Arc
 # path
 export PATH=$PATH:/home/dysleixa/projects/chromium/depot_tools
 export PATH=$PATH:~/.cabal/binTH=$PATH:~/.cabal/bin
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 source ~/.config/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
