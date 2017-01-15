@@ -9,7 +9,6 @@ HOSTNAME=`uname -n`
 KERNEL=`uname -r`
 CPU=`awk -F '[ :][ :]+' '/^model name/ { print $2; exit; }' /proc/cpuinfo`
 ARCH=`uname -m`
-pacman -Sy > /dev/null
 PACMAN=`pacman -Qu | wc -l`
 DISC=`df -h | grep /dev/sda4 | awk '{print $5 }'`
 MEMORY1=`free -t -m | grep "Mem" | awk '{print $3" MB";}'`
@@ -64,7 +63,7 @@ echo -e "       $R KERNEL   $W= $KERNEL                                 " >> $mo
 echo -e "       $R CPU      $W= $CPU                                    " >> $motd
 echo -e "       $R HOSTNAME $W= $HOSTNAME                             " >> $motd
 echo -e "       $R ARCH     $W= $ARCH                                     " >> $motd
-echo -e "       $R SYSTEM   $W= $PACMAN packages can be updated         " >> $motd
+echo -e "       $R SYSTEM   $W= $X$PACMAN$W packages can be updated         " >> $motd
 echo -e "       $R USERS    $W= Currently `users | wc -w` users logged on " >> $motd
 echo -e "$R===============================================================" >> $motd
 echo -e "       $R CPU Usage       $W= $LOAD1 1 min $LOAD5 5 min $LOAD15 15 min " >> $motd
