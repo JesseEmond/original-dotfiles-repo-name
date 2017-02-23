@@ -93,7 +93,7 @@ export PATH=$HOME/bin:/usr/local/bin:~/.local/bin:/usr/bin:$PATH
 # export PATH="/usr/lib/node_modules:`ruby -e 'print Gem.user_dir'`/bin:$PATH"
 
 # gtk
-export GTK_THEME=Arc
+export GTK_THEME=Adapta
 
 # path
 export PATH=$PATH:/home/dysleixa/projects/chromium/depot_tools
