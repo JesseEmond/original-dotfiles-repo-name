@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-ZSH=/usr/share/oh-my-zsh/
+ZSH=~/.oh-my-zsh/
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -99,7 +99,7 @@ export GTK_THEME=Adapta
 export PATH=$PATH:/home/dysleixa/projects/chromium/depot_tools
 export PATH=$PATH:~/.cabal/binTH=$PATH:~/.cabal/bin
 
-source ~/.config/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # functions
 function :q { exit }
